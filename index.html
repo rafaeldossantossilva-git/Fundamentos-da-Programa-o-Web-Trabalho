@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio - Rafael Santos</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="theme-light">
+
+    <header class="navbar">
+        <nav>
+            <ul>
+                <li><a href="#sobre">Sobre mim</a></li>
+                <li><a href="#formacao">Formação</a></li>
+                <li><a href="#portfolio">Portfólio</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+        <button id="theme-toggle" class="btn-theme">🌓 Tema</button>
+    </header>
+
+    <section id="sobre" class="section-container">
+        <h2>Sobre Mim</h2>
+        <p>Estudante de Análise e Desenvolvimento de Sistemas e Ciências Contábeis...</p>
+        </section>
+
+    <section id="formacao" class="section-container">
+        <h2>Formação Acadêmica</h2>
+        <div class="card">
+            <h3>Análise e Desenvolvimento de Sistemas</h3>
+            <p>Uninter - Em andamento (Início: 07/2025)</p>
+        </div>
+        <div class="card">
+            <h3>Bacharelado em Ciências Contábeis</h3>
+            <p>Uninter - Em andamento (Início: 08/2025)</p>
+        </div>
+    </section>
+
+    <section id="portfolio" class="section-container">
+        <h2>Portfólio de Projetos</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <h3>XMLAuto</h3>
+                <p>Automação de download de arquivos fiscais desenvolvida em C# com Puppeteer Sharp.</p>
+            </div>
+            <div class="project-card">
+                <h3>Operation Cozy World</h3>
+                <p>Jogo 3D de mundo aberto com mecânicas de RPG em desenvolvimento na Unity 6.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="section-container">
+        <h2>Contato</h2>
+        <form id="contact-form" novalidate>
+            <div class="form-group">
+                <label for="name">Nome:</label>
+                <input type="text" id="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Mensagem:</label>
+                <textarea id="message" required></textarea>
+            </div>
+            <button type="submit" class="btn-submit">Enviar Mensagem</button>
+        </form>
+    </section>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
