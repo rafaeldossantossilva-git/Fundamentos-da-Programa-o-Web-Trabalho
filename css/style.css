@@ -20,7 +20,7 @@ body.theme-dark {
     box-sizing: border-box;
 }
 
-html, boyd {
+html, body {
     margin: 0;
     padding: 0;
     width: 100%;
@@ -51,7 +51,7 @@ body {
     transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.6s ease;
 }
 
-.section-cointainer.active {
+.section-container.active {
     opacity: 1;
     pointer-events: auto;
 }
@@ -114,4 +114,26 @@ body {
     background-color: var(--card-bg);
     padding: 1.5rem;
     border-radius: 8px;
+}
+
+#transition-curtain {
+    position: fixed;
+    top: 0;
+    left: -120vw;
+    width: 120vw;
+    height: 100vh;
+    background: linear-gradient(135deg, #000000 45%, #dc3545 50%, #000000 55%);
+    z-index: 9999;
+    transform: skewX(-15deg);
+    pointer-events: none;
+}
+
+#transition-curtain.run {
+    animation: wipeScreen 0.6s cubic-bezier(0.77, 0, 0.1775, 1);
+}
+
+@keyframes wipeScreen {
+    0% {left: -120vw;}
+    50% {left: -10vw;}
+    100% {left: 120vw;}
 }

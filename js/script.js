@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    
+
 
     const themeToggle = document.getElementById("theme-toggle");
     const body = document.body;
@@ -37,5 +37,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
         alert("🎉 Mensagem enviada com sucesso! (Simulação)");
         contactForm.reset();
+    });
+
+    const links = document.querySelectorAll(".navbar a");
+    const sections = document.querySelectorAll(".section-container");
+    const curtain = document.getElementById("transition-curtain");
+
+    if (sections.length > 0) {
+        sections[0].classList.add("active");
+    }
+
+    links.forEach(link => {
+        link.addEventListener("click", (e) => {
+            if (link.id === "theme-toggle" || link.classList.contains("btn-theme")) return;
+
+            e.preventDefault();
+
+            const targetId = link.getAttribute("href").substring(1);
+            const targetSection = document.getElementById(targetId);
+
+            if (targetSection && !targetSection.classList.contains("active")) {
+
+                curtain.classList.add("run");
+
+                setTimeout(() => {
+                    sections.forEach(sec => sec.classList.remove("active"));
+
+                    targetSection.classList.add("active");
+                }, 300);
+
+                setTimeout(() => {
+                    curtain.classList.remove("run");
+                }, 600);
+            }
+        });
     });
 });
