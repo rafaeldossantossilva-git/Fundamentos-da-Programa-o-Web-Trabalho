@@ -43,8 +43,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const sections = document.querySelectorAll(".section-container");
     const curtain = document.getElementById("transition-curtain");
 
-    if (sections.length > 0) {
+    if (sections.length > 0 && links.length > 0) {
         sections[0].classList.add("active");
+        links[0].classList.add("active");
     }
 
     links.forEach(link => {
@@ -57,18 +58,27 @@ document.addEventListener("DOMContentLoaded", () => {
             const targetSection = document.getElementById(targetId);
 
             if (targetSection && !targetSection.classList.contains("active")) {
+                
+                if (curtain) {
+                    curtain.classList.add("run");
 
-                curtain.classList.add("run");
+                    setTimeout(() => {
+                        sections.forEach(sec => sec.classList.remove("active"));
+                        links.forEach(l => l.classList.remove("active"));
+                        targetSection.classList.add("active");
+                        link.classList.add("active");
+                    }, 300);
 
-                setTimeout(() => {
+                    setTimeout(() => {
+                        curtain.classList.remove("run");
+                    }, 600);
+                } else {
                     sections.forEach(sec => sec.classList.remove("active"));
-
+                    links.forEach(l => l.classList.remove("active"));
                     targetSection.classList.add("active");
-                }, 300);
-
-                setTimeout(() => {
-                    curtain.classList.remove("run");
-                }, 600);
+                    link.classList.add("active");
+                }
+                
             }
         });
     });

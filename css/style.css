@@ -90,18 +90,30 @@ body {
         transition: all 0.2s ease;
     }
 
-        .navbar a:hover {
-            background-color: #000000;
+        .navbar a:hover,
+        .navbar a.active {
+            position: relative;
             color: #ffffff;
-            transform: skewX(-20deg);
+            background-color: transparent;
+            z-index: 1;
+            transition: color 0.15s ease;
         }
-/*.section-container {
-    padding: 100px 2rem 60px 2rem;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}*/
+
+        .navbar a:hover::before,
+        .navbar a.active::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000000;
+            z-index: -1;
+            
+            filter: drop-shadow(4px 4px 0px #d92323);
+            
+            animation: p5-jitter 0.20s infinite linear;
+        }
 
 .project-grid {
     display: grid;
@@ -136,4 +148,13 @@ body {
     0% {left: -120vw;}
     50% {left: -10vw;}
     100% {left: 120vw;}
+}
+
+@keyframes p5-jitter {
+    0% { transform: skewX(-20deg) translate(0, 0) rotate(0deg); }
+    20% { transform: skewX(-19deg) translate(-1px, 1px) rotate(-0.5deg); }
+    40% { transform: skewX(-21deg) translate(1px, -1px) rotate(0.5deg); }
+    60% { transform: skewX(-20deg) translate(-1px, -1px) rotate(0deg); }
+    80% { transform: skewX(-19.5deg) translate(1px, 1px) rotate(0.3deg); }
+    100% { transform: skewX(-20.5deg) translate(0, 0) rotate(-0.3deg); }
 }
