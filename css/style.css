@@ -149,7 +149,7 @@ body {
 
 @keyframes wipeScreen {
     0% {left: -120vw;}
-    50% {left: 10vw;}
+    50% {left: -10vw;}
     100% {left: 120vw;}
 }
 
