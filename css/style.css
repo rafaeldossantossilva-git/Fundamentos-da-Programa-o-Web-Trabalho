@@ -134,7 +134,7 @@ body {
 #transition-curtain {
     position: fixed;
     top: 0;
-    left: -120vw;
+    left: -150vw;
     width: 120vw;
     height: 100vh;
     background: linear-gradient(135deg, #000000 45%, #dc3545 50%, #000000 55%);
@@ -149,7 +149,7 @@ body {
 
 @keyframes wipeScreen {
     0% {left: -120vw;}
-    50% {left: -10vw;}
+    50% {left: 10vw;}
     100% {left: 120vw;}
 }
 
