@@ -176,3 +176,50 @@ body {
     80% { transform: skewX(-19.5deg) translate(1px, 1px) rotate(0.3deg); }
     100% { transform: skewX(-20.5deg) translate(0, 0) rotate(-0.3deg); }
 }
+
+@media (max-width: 768px) {
+    .navbar {
+        border: 6px solid #000000;
+        padding: 0.5rem 0.75rem;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    .navbar nav {
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .navbar ul {
+        gap: 0.5re;
+        padding: 0;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .navbar a {
+        font-size: 13px;
+        padding: 6px 8px;
+    }
+
+    .navbar a:hover::before,
+    .navbar a.active::before {
+        filter: drop-shadow(2px 2px 0px #d92323);
+        animation: p5-jitter-mobile 0.2s infinite linear;
+    }
+
+    .section-container {
+        padding: 140px 1.2rem 40px 1.2rem;
+    }
+}
+
+@keyframes p5-jitter-mobile {
+    0% { transform: skewX(-12deg) translate(0, 0); }
+    50% { transform: skewX(-14deg) translate(-0.5px, 0.5px); }
+    100% { transform: skewX(-12deg) translate(0, 0); }
+}
