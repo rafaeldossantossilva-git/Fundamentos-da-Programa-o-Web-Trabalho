@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     contactForm.addEventListener("submit", (event) => {
 
-        event.preventDefault(); 
+        event.preventDefault();
 
         const name = document.getElementById("name").value.trim();
         const email = document.getElementById("email").value.trim();
@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     links.forEach(link => {
         link.addEventListener("click", (e) => {
-            if (link.id === "theme-toggle" || link.classList.contains("btn-theme")) return;
+            if (link.id === "theme-toggle" || link.classList.contains("btn-theme") || link.closest('#theme-toggle')) return;
 
             e.preventDefault();
 
@@ -60,26 +60,42 @@ document.addEventListener("DOMContentLoaded", () => {
             if (targetSection && !targetSection.classList.contains("active")) {
                 
                 if (curtain) {
-                    curtain.classList.add("run");
+                    //curtain.classList.add("run");
+                    const randomAnimation = Math.floor(Math.random() * 4) + 1;
+                    const animationClass = `run-${randomAnimation}`;
 
+                    curtain.dataset.currentClass = animationClass;
+                    curtain.classList.add(animationClass);
+                    
                     setTimeout(() => {
                         sections.forEach(sec => sec.classList.remove("active"));
                         links.forEach(l => l.classList.remove("active"));
                         targetSection.classList.add("active");
                         link.classList.add("active");
+                        window.location.hash = targetId;
                     }, 300);
 
-                    setTimeout(() => {
-                        curtain.classList.remove("run");
-                    }, 600);
+                    //setTimeout(() => {
+                    //    curtain.classList.remove("run");
+                    //}, 600);
                 } else {
                     sections.forEach(sec => sec.classList.remove("active"));
                     links.forEach(l => l.classList.remove("active"));
                     targetSection.classList.add("active");
                     link.classList.add("active");
-                }
-                
+                    Window.location.hash = targetId;
+                } 
             }
         });
     });
+
+    if (curtain) {
+        curtain.addEventListener("animationend", () => {
+            const currentClass = curtain.dataset.currentClass;
+            if (currentClass) {
+                curtain.classList.remove(currentClass);
+                delete curtain.dataset.currentClass;
+            }
+        });
+    }
 });

@@ -143,31 +143,85 @@ body {
     background-color: #00E5FF;
     border-radius: 2px;
     transform: translateZ(-1px);
-    z-index: -1;
+    /*z-index: -1;*/
 }
 
 #transition-curtain {
     position: fixed;
     top: 0;
-    left: -150vw;
-    width: 120vw;
+    left: -160vw;
+    width: 130vw;
     height: 100vh;
     background: linear-gradient(135deg, #000000 45%, #dc3545 50%, #000000 55%);
     z-index: 9999;
-    transform: skewX(-15deg);
+    /*transform: skewX(-15deg);*/
     pointer-events: none;
 }
-
+/*
 #transition-curtain.run {
     animation: wipeScreen 0.6s cubic-bezier(0.77, 0, 0.1775, 1);
 }
+*/
+/*Bloco de teste*/
+#transition-curtain.run-1 {
+    top: 0; left: -160vw; bottom: auto; right: auto;
+    width: 130vw; height: 100vh;
+    transform: skewX(-15deg);
+    animation: moveRight 0.6s cubic-bezier(0.77, 0, 0.1775, 1) forwards;
+}
 
+#transition-curtain.run-2 {
+    top: 0; left: auto; bottom: auto; right: -160vw;
+    width: 130vw; height: 100vh;
+    transform: skewX(15deg);
+    animation: moveLeft 0.6s cubic-bezier(0.77, 0, 0.1775, 1) forwards;
+}
+
+#transition-curtain.run-3 {
+    top: auto; left: 0; bottom: -130vh; right: auto;
+    width: 100vw; height: 120vh;
+    transform: skewY(-5deg);
+    animation: moveUp 0.55s cubic-bezier(0.15, 0.85, 0.35, 1) forwards;
+}
+
+#transition-curtain.run-4 {
+    top: -130vh; left: 0; bottom: auto; right: auto;
+    width: 100vw; height: 120vh;
+    transform: skewY(5deg);
+    animation: moveDown 0.55s cubic-bezier(0.15, 0.85, 0.35, 1) forwards;
+}
+
+@keyframes moveRight {
+    0%   { left: -160vw; }
+    50%  { left: -15vw;  }
+    100% { left: 160vw;  }
+}
+
+@keyframes moveLeft {
+    0%   { right: -160vw; }
+    50%  { right: -15vw;  }
+    100% { right: 160vw;  }
+}
+
+@keyframes moveUp {
+    0%   { bottom: -130vh; }
+    50%  { bottom: -10vh;  }
+    100% { bottom: 130vh;  }
+}
+
+@keyframes moveDown {
+    0%   { top: -130vh; }
+    50%  { top: -10vh;  }
+    100% { top: 130vh;  }
+}
+/*Fim bloco de teste*/
+/*
 @keyframes wipeScreen {
     0% {left: -120vw;}
     50% {left: -10vw;}
     100% {left: 120vw;}
 }
-
+*/
 @keyframes p5-jitter {
     0% { transform: skewX(-20deg) translate(0, 0) rotate(0deg); }
     20% { transform: skewX(-19deg) translate(-1px, 1px) rotate(-0.5deg); }
@@ -196,7 +250,7 @@ body {
     }
 
     .navbar ul {
-        gap: 0.5re;
+        gap: 0.5rem;
         padding: 0;
         justify-content: center;
         width: 100%;
