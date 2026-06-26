@@ -60,7 +60,6 @@ document.addEventListener("DOMContentLoaded", () => {
             if (targetSection && !targetSection.classList.contains("active")) {
                 
                 if (curtain) {
-                    //curtain.classList.add("run");
                     const randomAnimation = Math.floor(Math.random() * 4) + 1;
                     const animationClass = `run-${randomAnimation}`;
 
@@ -75,15 +74,12 @@ document.addEventListener("DOMContentLoaded", () => {
                         window.location.hash = targetId;
                     }, 300);
 
-                    //setTimeout(() => {
-                    //    curtain.classList.remove("run");
-                    //}, 600);
                 } else {
                     sections.forEach(sec => sec.classList.remove("active"));
                     links.forEach(l => l.classList.remove("active"));
                     targetSection.classList.add("active");
                     link.classList.add("active");
-                    Window.location.hash = targetId;
+                    window.location.hash = targetId;
                 } 
             }
         });
