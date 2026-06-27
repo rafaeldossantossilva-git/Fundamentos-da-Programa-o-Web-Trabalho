@@ -607,17 +607,18 @@ body.theme-dark .p5-theme-btn {
 @media (max-width: 768px) {
     .navbar {
         border: 6px solid #000000;
-        padding: 0.5rem 0.75rem;
+        padding: 0.8rem 1rem;
         flex-direction: row;
         flex-wrap: wrap;
-        justify-content: center;
-        gap: 0.5rem;
+        justify-content: space-between;
+        gap: 0.75rem;
     }
 
     .navbar nav {
         margin-left: 0;
         margin-right: 0;
         width: 100%;
+        order: 3;
         display: flex;
         justify-content: center;
     }
@@ -630,11 +631,12 @@ body.theme-dark .p5-theme-btn {
     }
 
     .navbar a {
-        font-size: 13px;
+        font-size: 12px;
         padding: 6px 8px;
     }
 
     .p5-theme-btn {
+        order: 2;
         padding: 4px 8px;
     }
 
