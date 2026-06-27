@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfólio - Rafael Santos</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body class="theme-light">
     <div id="transition-curtain">
         <div class="p5-stripe stripe-white"></div>
@@ -14,6 +16,11 @@
     </div>
 
     <header class="navbar">
+        <div id="p5-calendar" class="p5-date-display">
+            <span class="p5-day-label">DATES</span>
+            <span id="p5-current-date" class="p5-date-numbers">00/00</SPan>
+        </div>
+
         <nav>
             <ul>
                 <li><a href="#sobre">Sobre mim</a></li>
@@ -22,13 +29,22 @@
                 <li><a href="#contato">Contato</a></li>
             </ul>
         </nav>
-        <button id="theme-toggle" class="btn-theme">🌓 Tema</button>
+        <!-- <button id="theme-toggle" class="btn-theme">🌓 Tema</button> -->
+        <button id="theme-toggle" class="p5-theme-btn" aria-label="Alternar Tema">
+            <img src="images\p5logo.png" alt="Phantom Thieves Logo" class="p5-theme-icon">
+        </button>
     </header>
 
     <section id="sobre" class="section-container">
-        <h2>Sobre Mim</h2>
-        <p>Estudante de Análise e Desenvolvimento de Sistemas e Ciências Contábeis...</p>
-        </section>
+        <h2 class="p5-section-title">Sobre Mim</h2>
+        <div class="project-grid">
+            <div class="project-card p5-card-skew-3">
+                <div class="p5-card-inner">
+                    <p>Estudante de Análise e Desenvolvimento de Sistemas e Ciências Contábeis...</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <section id="formacao" class="section-container">
         <h2 class="p5-section-title">Formação Acadêmica</h2>
@@ -53,11 +69,13 @@
     <section id="portfolio" class="section-container">
         <h2 class="p5-section-title">Portfólio de Projetos</h2>
         <div class="project-grid">
-            
+
             <div class="project-card p5-card-skew-1">
                 <div class="p5-card-inner">
                     <h3>Conversor e Auditor Digital DMED</h3>
-                    <p>Software desktop que automatiza o pipeline de ETL de relatórios do ISS Fortaleza, limpando inconsistências de CPFs e consolidando dados em lote para gerar arquivos prontos para a Receita Federal.</p>
+                    <p>Software desktop que automatiza o pipeline de ETL de relatórios do ISS Fortaleza, limpando
+                        inconsistências de CPFs e consolidando dados em lote para gerar arquivos prontos para a Receita
+                        Federal.</p>
                     <p class="p5-tech-stack">Tech Stack: C# | .NET | WPF | ETL</p>
                 </div>
             </div>
@@ -65,7 +83,8 @@
             <div class="project-card p5-card-skew-2">
                 <div class="p5-card-inner">
                     <h3>Processador Automatizado de Notas Fiscais</h3>
-                    <p>Ferramenta de auditoria contábil que realiza varredura inteligente de diretórios e extração de texto de PDFs para validar e renomear arquivos fiscais em massa, eliminando falhas humanas.</p>
+                    <p>Ferramenta de auditoria contábil que realiza varredura inteligente de diretórios e extração de
+                        texto de PDFs para validar e renomear arquivos fiscais em massa, eliminando falhas humanas.</p>
                     <p class="p5-tech-stack">Tech Stack: C# | .NET | iText7 (PDF Parsing)</p>
                 </div>
             </div>
@@ -73,7 +92,9 @@
             <div class="project-card p5-card-skew-3">
                 <div class="p5-card-inner">
                     <h3>ImportadorAG</h3>
-                    <p>Middleware de automação que extrai dados de XMLs de NF-es e aplica regras de negócio inteligentes (como conversão de NCM), gerando arquivos de importação perfeitamente formatados para o sistema Fortes.</p>
+                    <p>Middleware de automação que extrai dados de XMLs de NF-es e aplica regras de negócio inteligentes
+                        (como conversão de NCM), gerando arquivos de importação perfeitamente formatados para o sistema
+                        Fortes.</p>
                     <p class="p5-tech-stack">Tech Stack: C# | .NET | XML Parsing</p>
                 </div>
             </div>
@@ -81,7 +102,9 @@
             <div class="project-card p5-card-skew-1">
                 <div class="p5-card-inner">
                     <h3>LifeRPG</h3>
-                    <p>Aplicativo mobile gamificado desenvolvido em Unity 6 que transforma rotinas reais de estudo e treino em progresso de RPG, utilizando conceitos avançados de POO e dicionários dinâmicos para a distribuição de XP.</p>
+                    <p>Aplicativo mobile gamificado desenvolvido em Unity 6 que transforma rotinas reais de estudo e
+                        treino em progresso de RPG, utilizando conceitos avançados de POO e dicionários dinâmicos para a
+                        distribuição de XP.</p>
                     <p class="p5-tech-stack">Tech Stack: C# | Unity 6 | POO Avançada</p>
                 </div>
             </div>
@@ -89,7 +112,8 @@
             <div class="project-card p5-card-skew-2">
                 <div class="p5-card-inner">
                     <h3>Operation Cozy World</h3>
-                    <p>RPG 3D de fantasia em terceira pessoa focado em exploração contemplativa e magia, construído sob rígidas boas práticas de arquitetura em C# e otimização de performance.</p>
+                    <p>RPG 3D de fantasia em terceira pessoa focado em exploração contemplativa e magia, construído sob
+                        rígidas boas práticas de arquitetura em C# e otimização de performance.</p>
                     <p class="p5-tech-stack">Tech Stack: C# | Unity 6 | 3D Game Design | Blender</p>
                 </div>
             </div>
@@ -98,7 +122,7 @@
     </section>
 
     <section id="contato" class="section-container">
-        <h2>Contato</h2>
+        <h2 class="p5-section-title">Contato</h2>
         <form class="p5-form" id="contact-form" autocomplete="off">
             <div class="p5-form-group">
                 <label class="p5-label">NOME:</label>
@@ -117,7 +141,8 @@
             <div class="p5-form-group">
                 <label class="p5-label">MENSAGEM:</label>
                 <div class="p5-input-wrapper">
-                    <textarea id="message" name="message" class="p5-input p5-textarea" placeholder="DEIXE UMA MENSAGEM..." required></textarea>
+                    <textarea id="message" name="message" class="p5-input p5-textarea"
+                        placeholder="DEIXE UMA MENSAGEM..." required></textarea>
                 </div>
             </div>
 
@@ -129,4 +154,5 @@
 
     <script src="js/script.js"></script>
 </body>
+
 </html>

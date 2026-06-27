@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        alert("🎉 Mensagem enviada com sucesso! (Simulação)");
+        alert("🎉 Mensagem enviada com sucesso!");
         contactForm.reset();
     });
 
@@ -58,14 +58,14 @@ document.addEventListener("DOMContentLoaded", () => {
             const targetSection = document.getElementById(targetId);
 
             if (targetSection && !targetSection.classList.contains("active")) {
-                
+
                 if (curtain) {
                     const randomAnimation = Math.floor(Math.random() * 4) + 1;
                     const animationClass = `run-${randomAnimation}`;
 
                     curtain.dataset.currentClass = animationClass;
                     curtain.classList.add(animationClass);
-                    
+
                     setTimeout(() => {
                         sections.forEach(sec => sec.classList.remove("active"));
                         links.forEach(l => l.classList.remove("active"));
@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     targetSection.classList.add("active");
                     link.classList.add("active");
                     window.location.hash = targetId;
-                } 
+                }
             }
         });
     });
@@ -94,4 +94,15 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }
+
+    function atualizarDataP5() {
+        const dataAtual = new Date();
+
+        const dia = String(dataAtual.getDate()).padStart(2, '0');
+        const mes = String(dataAtual.getMonth() + 1).padStart(2, '0');
+
+        document.getElementById('p5-current-date').textContent = `${dia}/${mes}`;
+    }
+
+    window.addEventListener('DOMContentLoaded', atualizarDataP5);
 });
