@@ -181,7 +181,7 @@ body.theme-dark .p5-theme-btn {
     transform-origin: center center;
     transform-style: preserve-3d;
 }
-
+/*
 .p5-theme-btn:hover {
     background-color: #dc3545;
     border-color: #000000;
@@ -192,7 +192,7 @@ body.theme-dark .p5-theme-btn {
     animation: p5-jitter 0.2s infinite linear;
     filter: brightness(0) invert(1);
 }
-
+*/
 .p5-theme-btn:active {
     transform: scale(0.92) rotate(-3deg) skewX(-10deg);
     box-shadow: 1px 1px 0px #000000;
