@@ -9,18 +9,28 @@
 </head>
 
 <body class="theme-light">
+
+    <!-- CORTINA DE TRANSIÇÃO: Container que segura as faixas do efeito cinematográfico (Shatter Effect) ao alternar abas -->
     <div id="transition-curtain">
+
+        <!-- Faixas geométricas de cores diferentes que se expandem via animação para cobrir a tela -->
         <div class="p5-stripe stripe-white"></div>
         <div class="p5-stripe stripe-red"></div>
         <div class="p5-stripe stripe-black"></div>
     </div>
 
+    <!-- NAVBAR: Menu superior principal estilizado como o HUD de menu do jogo -->
     <header class="navbar">
+
+        <!-- CALENDÁRIO COMPONENTIZADO: Bloco onde o JavaScript injeta a data atual do sistema do usuário -->
         <div id="p5-calendar" class="p5-date-display">
             <span class="p5-day-label">DATES</span>
-            <span id="p5-current-date" class="p5-date-numbers">00/00</SPan>
+
+            <!-- Os números iniciam zerados e são substituídos dinamicamente pelo script no formato DIA/MÊS -->
+            <span id="p5-current-date" class="p5-date-numbers">00/00</span>
         </div>
 
+        <!-- MENU DE NAVEGAÇÃO: Links que acionam a troca de abas via arquitetura SPA -->
         <nav>
             <ul>
                 <li><a href="#sobre">Sobre mim</a></li>
@@ -35,20 +45,65 @@
         </button>
     </header>
 
+    <!-- SEÇÃO SOBRE MIM: Apresentação principal do perfil profissional, acadêmico e pessoal -->
     <section id="sobre" class="section-container">
+
+        <!-- Título da seção estilizado com a tipografia e os blocos angulares do HUD de Persona 5 -->
         <h2 class="p5-section-title">Sobre Mim</h2>
-        <div class="project-grid">
-            <div class="project-card p5-card-skew-3">
-                <div class="p5-card-inner">
-                    <p>Estudante de Análise e Desenvolvimento de Sistemas e Ciências Contábeis...</p>
+
+        <!-- CARD DO PROJETO: Aplica o efeito de distorção geométrica (skew) assimétrica na caixa -->
+        <div class="project-card p5-card-skew-3">
+
+            <!-- CARD INNER: Contêiner interno que desfaz o efeito 'skew' para o texto não ficar torto -->
+            <div class="p5-card-inner">
+
+                <!-- Bloco 1: Core de formação dupla e ponte entre finanças e desenvolvimento de software -->
+                <p>
+                    Olá! Sou estudante de <strong>Análise e Desenvolvimento de Sistemas</strong> e de
+                    <strong>Ciências Contábeis</strong> pela Uninter. Unindo a paixão pela tecnologia com uma sólida
+                    trajetória de 8 anos de experiência nas áreas contábil e financeira, busco criar soluções que
+                    alinhem lógica de programação, otimização de processos e inteligência de negócios. Sou movido
+                    pelo desafio de resolver problemas complexos e transformar dados em ferramentas estratégicas.
+                </p>
+
+                <!-- Bloco 2: Foco técnico atual (Integração de Dados, Aplicações Desktop e automação de ETL) -->
+                <p>
+                    Atualmente, meu foco de aprendizado e desenvolvimento está na integração de sistemas com bancos
+                    de dados. Aplico esse conhecimento na construção de aplicações desktop personalizadas,
+                    projetadas para automatizar rotinas, otimizar fluxos de trabalho e facilitar o dia a dia de
+                    equipes operacionais. No ambiente de trabalho e acadêmico, destaco-me por ser extremamente
+                    centrado, criterioso, persistente no *debugging* de código e sempre pronto para colaborar em
+                    equipe.
+                </p>
+
+                <!-- Bloco 3: Vertente de Game Dev (Unity 6, C#, modelagem e referências artísticas de design) -->
+                <p>
+                    Nas horas vagas, exploro o universo do desenvolvimento de jogos na <strong>Unity 6</strong>
+                    através do meu projeto autoral, o <em>"Operation Cozy World"</em> — um laboratório prático onde
+                    aprimoro minhas habilidades em C#, game design, level design e modelagem 3D básica no Blender.
+                    Sou um entusiasta da história dos estúdios de jogos e fã de carteirinha de clássicos do mercado,
+                    encontrando grande parte da minha inspiração artística e técnica em títulos memoráveis como
+                    <em>Persona 5 Royal</em>, <em>Elden Ring</em> e a franquia <em>The Legend of Zelda</em>.
+                </p>
+
+                <!-- NUVEM DE HASHTAGS: Palavras-chave estilizadas para escaneamento visual rápido de competências -->
+                <div class="p5-tech-stack">
+                    #ADS #Contabilidade #CSharp #Unity6 #DataIntegration #FinanceTech
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- SEÇÃO FORMAÇÃO ACADÊMICA: Exibe os cursos de graduação e o status atual na instituição -->
     <section id="formacao" class="section-container">
+
+        <!-- Título da seção configurado com a classe de estilo do HUD (Persona 5) -->
         <h2 class="p5-section-title">Formação Acadêmica</h2>
+
+        <!-- GRID DE CURSOS: Alinha os blocos de formação usando CSS Grid Flex/Grid -->
         <div class="project-grid">
+
+            <!-- GRADUAÇÃO TECH: Card configurado com a inclinação assimétrica padrão 1 (skew-1) -->
             <div class="project-card p5-card-skew-1">
                 <div class="p5-card-inner">
                     <h3>Análise e Desenvolvimento de Sistemas</h3>
@@ -58,6 +113,8 @@
         </div>
 
         <div class="project-grid">
+
+            <!-- GRADUAÇÃO NEGÓCIOS: Card configurado com a inclinação assimétrica padrão 2 (skew-2) para quebrar a simetria visual -->
             <div class="project-card p5-card-skew-2">
                 <div class="p5-card-inner">
                     <h3>Bacharelado em Ciências Contábeis</h3>
@@ -66,6 +123,7 @@
             </div>
         </div>
     </section>
+
     <section id="portfolio" class="section-container">
         <h2 class="p5-section-title">Portfólio de Projetos</h2>
         <div class="project-grid">
@@ -121,16 +179,26 @@
         </div>
     </section>
 
+    <!-- SEÇÃO DE CONTATO: Formulário para captação de mensagens de visitantes -->
     <section id="contato" class="section-container">
+
+        <!-- Título da seção configurado com a identidade estilizada do projeto -->
         <h2 class="p5-section-title">Contato</h2>
+
+        <!-- Formulário com autocomplete desativado para manter a interface limpa -->
         <form class="p5-form" id="contact-form" autocomplete="off">
+
+            <!-- CAMPO NOME: Agrupamento padrão para rótulo e campo de texto -->
             <div class="p5-form-group">
                 <label class="p5-label">NOME:</label>
                 <div class="p5-input-wrapper">
+
+                    <!-- Validação 'required' garante que o campo não seja enviado vazio -->
                     <input type="text" id="name" name="name" class="p5-input" placeholder="DIGITE SEU NOME..." required>
                 </div>
             </div>
 
+            <!-- CAMPO E-MAIL: Validação nativa do tipo email para o input -->
             <div class="p5-form-group">
                 <label class="p5-label">E-MAIL:</label>
                 <div class="p5-input-wrapper">
@@ -138,6 +206,7 @@
                 </div>
             </div>
 
+            <!-- CAMPO MENSAGEM: Área de texto multilinha para o conteúdo da mensagem -->
             <div class="p5-form-group">
                 <label class="p5-label">MENSAGEM:</label>
                 <div class="p5-input-wrapper">
@@ -146,12 +215,14 @@
                 </div>
             </div>
 
+            <!-- BOTÃO SUBMIT: Dispara o envio dos dados capturados e validações HTML5 -->
             <button type="submit" class="p5-submit-btn">
                 <span>ENVIAR MENSAGEM</span>
             </button>
         </form>
     </section>
 
+    <!-- SCRIPT ADICIONAL: Inclusão da lógica JavaScript global para o comportamento do portfólio -->
     <script src="js/script.js"></script>
 </body>
 

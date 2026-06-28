@@ -1,24 +1,44 @@
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
+/* ==========================================================================
+   VARIÁVEIS E CONFIGURAÇÕES DE TEMA
+   ========================================================================== */
 :root {
+    /* Vermelho característico de fundo */
     --bg-color: #732424;
+    /* Texto padrão para alto contraste */
     --text-color: black;
+    /* Fundo da barra de navegação superior */
     --nav-bg: #f0f2f5;
+    /* Fundo interno dos cards */
     --card-bg: #f0f2f5;
+    /* Cor de destaque para links/foco */
     --accent-color: #007bff;
 }
 
+/* ==========================================================================
+   SOBRE SCRITA DE VARIÁVEIS PARA O TEMA ESCURO (DARK MODE)
+   ========================================================================== */
 body.theme-dark {
+    /* Fundo preto absoluto */
     --bg-color: #121212;
+    /* Texto cinza claro para evitar fadiga visual */
     --text-color: #e0e0e0;
+    /* Ajuste escuro para a navbar */
     --nav-bg: #1f1f1f;
+    /* Fundo escuro para os cards de projetos */
     --card-bg: #1e1e1e;
+    /* Destaque azulado suavizado */
     --accent-color: #375a7f;
 }
 
+/* ==========================================================================
+   RESET GLOBAL E REGRAS ESTRUTURAIS DE VIEWPORT
+   ========================================================================== */
 * {
     margin: 0;
     padding: 0;
+    /* Garante que padding e border não alterem o tamanho real do elemento */
     box-sizing: border-box;
 }
 
@@ -35,34 +55,49 @@ body {
     font-family: Arial, sans-serif;
     background-color: var(--bg-color);
     color: var(--text-color);
+    /* Transição suave na mudança de tema */
     transition: background-color 0.3s, color 0.3s;
     line-height: 1.6;
 }
 
+/* ==========================================================================
+   SISTEMA DE SEÇÕES E ABAS ASSÍNCRONAS (SPA)
+   ========================================================================== */
 .section-container {
+    /* Sobrepõe todas as seções no mesmo espaço da tela */
     position: absolute;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
+    /* Espaçamento superior para não sumir atrás da navbar fixed */
     padding: 120px 2rem 60px 2rem;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    /* Esconde a seção por padrão */
     opacity: 0;
+    /* Desativa cliques enquanto a seção estiver invisível */
     pointer-events: none;
     transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.6s ease;
     overflow-x: hidden;
     overflow-y: hidden;
 }
 
+/* Estado ativado pelo JavaScript quando a aba é selecionada */
 .section-container.active {
     opacity: 1;
+    /* Reativa cliques e interações */
     pointer-events: auto;
+    /* Permite scroll vertical apenas dentro da seção ativa se o conteúdo estourar */
     overflow-y: auto;
 }
 
+/* ==========================================================================
+   BARRA DE NAVEGAÇÃO SUPERIOR (HUD)
+   ========================================================================== */
 .navbar {
+    /* Fixa o menu no topo durante a rolagem interna */
     position: fixed;
     top: 0;
     width: 100%;
@@ -72,12 +107,15 @@ body {
     align-items: center;
     padding: 1rem 2rem;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* Garante que a navbar fique sempre acima das seções e dos cards */
     z-index: 1000;
+    /* Borda grossa preta estilo quadrinho/HQ */
     border: 12px solid #000000;
 }
 
 .navbar nav {
     margin-left: auto;
+    /* Centraliza o bloco de links horizontalmente */
     margin-right: auto;
 }
 
@@ -96,6 +134,7 @@ body {
     transition: all 0.2s ease;
 }
 
+/* Efeito de destaque ao passar o mouse ou quando o link representa a aba ativa */
 .navbar a:hover,
 .navbar a.active {
     position: relative;
@@ -105,6 +144,7 @@ body {
     transition: color 0.15s ease;
 }
 
+/* Pseudo-elemento que cria a caixa de fundo preta recortada com vibração angular */
 .navbar a:hover::before,
 .navbar a.active::before {
     content: "";
@@ -114,13 +154,17 @@ body {
     width: 100%;
     height: 100%;
     background-color: #000000;
+    /* Joga a caixa para trás do texto */
     z-index: -1;
-
+    /* Sombra rígida vermelha */
     filter: drop-shadow(4px 4px 0px #d92323);
-
+    /* Dispara a trepidação contínua */
     animation: p5-jitter 0.20s infinite linear;
 }
 
+/* ==========================================================================
+   ELEMENTO INDIVIDUAL: CALENDÁRIO ESTILO PERSONA 5
+   ========================================================================== */
 .p5-date-display {
     background-color: #000000;
     color: #ffffff;
@@ -129,6 +173,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    /* Inclinação geométrica do display */
     transform: rotate(-2deg) skewX(-8deg);
     box-shadow: 3px 3px 0px #dc3545;
     user-select: none;
@@ -144,6 +189,7 @@ body {
 }
 
 .p5-date-numbers {
+    /* Fonte pixelada importada do Google Fonts */
     font-family: 'VT323', monospace;
     font-size: 1.9rem;
     font-weight: bold;
@@ -152,6 +198,9 @@ body {
     color: #ffffff;
 }
 
+/* ==========================================================================
+   BOTÃO DE ALTERNAR TEMA (PHANTOM THIEVES LOGO)
+   ========================================================================== */
 .p5-theme-btn {
     background-color: #000000;
     border: 3px solid #ffffff;
@@ -160,10 +209,12 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    /* Inclinação sutil combinada */
     transform: rotate(-3deg) skewX(-10deg);
     box-shadow: 4px 4px 0px #dc3545;
     transition: background-color 0.15s ease, box-shadow 0.15s ease;
     outline: none;
+    /* Prepara o ambiente para rotações tridimensionais no ícone filho */
     perspective: 1000px;
 }
 
@@ -176,30 +227,28 @@ body.theme-dark .p5-theme-btn {
     width: 45px;
     height: auto;
     display: block;
+    /* Animação de rotação 3D contínua */
     animation: p5-card-flip 10s infinite ease-in-out;
     transition: filter 0.2s ease;
     transform-origin: center center;
+    /* Mantém a renderização em profundidade 3D */
     transform-style: preserve-3d;
 }
-/*
-.p5-theme-btn:hover {
-    background-color: #dc3545;
-    border-color: #000000;
-    box-shadow: -4px -4px 0px #ffffff;
-}
 
-.p5-theme-btn:hover .p5-theme-icon {
-    animation: p5-jitter 0.2s infinite linear;
-    filter: brightness(0) invert(1);
-}
-*/
+/* Feedback físico ao clicar no botão */
 .p5-theme-btn:active {
+    /* Reduz levemente simulando o clique */
     transform: scale(0.92) rotate(-3deg) skewX(-10deg);
+    /* Encurta a sombra */
     box-shadow: 1px 1px 0px #000000;
 }
 
+/* ==========================================================================
+   GRID DE PROJETOS E TÍTULOS
+   ========================================================================== */
 .project-grid {
     display: grid;
+    /* Totalmente responsivo sem quebras manuais */
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.5rem;
     margin-top: 1rem;
@@ -212,20 +261,24 @@ body.theme-dark .p5-theme-btn {
     font-weight: 900;
     font-size: 1.8rem;
     padding: 8px 20px;
+    /* Título em formato trapezoidal inclinado */
     transform: rotate(-1.5deg) skewX(-10deg);
     box-shadow: 4px 4px 0px #dc3545;
     margin-bottom: 2rem;
     display: inline-block;
 }
 
+/* Configuração base da moldura externa do card */
 .project-card {
     position: relative;
     background-color: #000000;
+    /* Cria a borda preta fina externa */
     padding: 4px;
     transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s ease;
     box-shadow: 6px 6px 0px #00E5FF;
 }
 
+/* Conteúdo interno do card */
 .p5-card-inner {
     background-color: var(--card-bg);
     color: var(--text-color);
@@ -247,6 +300,7 @@ body.theme-dark .p5-theme-btn {
 }
 
 .p5-tech-stack {
+    /* Empurra a Tech Stack sempre para o final inferior do card */
     margin-top: auto;
     font-weight: bold;
     font-style: italic;
@@ -254,6 +308,11 @@ body.theme-dark .p5-theme-btn {
     font-size: 0.9rem;
 }
 
+/* ==========================================================================
+   EFEITOS DE SKEW E ANIMAÇÕES (Corte diagonal dos cards estilo P5)
+   ========================================================================== */
+/* Regra de Ouro: O pai deforma em X, o filho desfaz a deformação em X na mesma intensidade.
+   Isso permite manter as caixas e bordas inclinadas, mas preserva os textos retos e legíveis. */
 .p5-card-skew-1 {
     transform: skewX(-6deg) rotate(-1deg);
 }
@@ -278,12 +337,19 @@ body.theme-dark .p5-theme-btn {
     transform: skewX(4deg) rotate(-2deg);
 }
 
+/* Feedback visual de Hover nos cards */
 .project-card:hover {
+    /* Inverte a direção e cor da sombra */
     box-shadow: -6px -6px 0px #dc3545;
+    /* Endireita e expande levemente o card */
     transform: scale(1.04) rotate(0deg) skewX(0deg);
+    /* Garante que o card focado fique por cima dos vizinhos */
     z-index: 10;
 }
 
+/* ==========================================================================
+   FORMULÁRIO DE CONTATO ASYMMETRIC P5
+   ========================================================================== */
 .p5-form {
     max-width: 600px;
     width: 100%;
@@ -301,6 +367,7 @@ body.theme-dark .p5-theme-btn {
     position: relative;
 }
 
+/* Estilização dos rótulos (Labels) */
 .p5-label {
     background-color: #000000;
     color: #ffffff;
@@ -312,6 +379,7 @@ body.theme-dark .p5-theme-btn {
     letter-spacing: 1px;
 }
 
+/* Seletores estruturais alternando a inclinação de cada label para quebrar a simetria */
 .p5-form-group:nth-child(2) .p5-label {
     transform: rotate(1.5deg) skewX(8deg);
     box-shadow: -3px 3px 0px #dc3545;
@@ -321,21 +389,25 @@ body.theme-dark .p5-theme-btn {
     transform: rotate(-1deg) skewX(-5deg);
 }
 
+/* Caixa preta externa de envelopamento do input para gerar o efeito de corte */
 .p5-input-wrapper {
     position: relative;
     width: 100%;
     background-color: #000000;
     padding: 4px;
+    /* Corta a caixa externa */
     transform: skewX(-12deg);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.2);
 }
 
+/* Altera a sombra externa quando o usuário clica para digitar no campo */
 .p5-input-wrapper:focus-within {
     transform: skewX(-12deg) scale(1.02);
     box-shadow: 5px 5px 0px #dc3545;
 }
 
+/* Campo de entrada de texto real */
 .p5-input {
     width: 100%;
     background-color: #ffffff;
@@ -347,6 +419,7 @@ body.theme-dark .p5-theme-btn {
     font-style: italic;
     color: #000000;
     font-size: 1rem;
+    /* Desfaz a inclinação do pai para manter o texto reto */
     transform: skewX(12deg);
 }
 
@@ -357,11 +430,13 @@ body.theme-dark .p5-theme-btn {
 
 .p5-textarea {
     min-height: 120px;
+    /* Bloqueia o redimensionamento manual para não quebrar o layout geométrico */
     resize: none;
     font-family: sans-serif;
     font-style: normal;
 }
 
+/* Botão de Envio */
 .p5-submit-btn {
     align-self: flex-start;
     background-color: #dc3545;
@@ -385,6 +460,7 @@ body.theme-dark .p5-theme-btn {
 .p5-submit-btn:hover {
     background-color: #ffffff;
     color: #000000;
+    /* Efeito trepidação ao passar o mouse */
     animation: p5-jitter 0.2s infinite linear;
 }
 
@@ -393,23 +469,30 @@ body.theme-dark .p5-theme-btn {
     box-shadow: 2px 2px 0px #000000;
 }
 
+/* ==========================================================================
+   SISTEMA CINEMATOGRÁFICO DA CORTINA DE TRANSIÇÃO (SHATTER EFFECTS)
+   ========================================================================== */
 #transition-curtain {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
+    /* Camada máxima absoluta do navegador */
     z-index: 9999;
+    /* Permite cliques passarem através do elemento invisível */
     pointer-events: none;
     display: block;
 }
 
+/* Faixas individuais da cortina */
 .p5-stripe {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    /* Colapsado num único ponto central */
     clip-path: polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%);
     opacity: 0;
 }
@@ -426,10 +509,12 @@ body.theme-dark .p5-theme-btn {
     background-color: #ffffff;
 }
 
+/* Injeção de gatilho via JS disparando a visibilidade */
 #transition-curtain[class*="run-"] .p5-stripe {
     opacity: 1;
 }
 
+/* Sistema de Delay em Cascata (Gera profundidade na entrada das cores) */
 #transition-curtain[class*="run-"] .p5-stripe.stripe-white {
     animation-delay: 0s;
 }
@@ -442,6 +527,7 @@ body.theme-dark .p5-theme-btn {
     animation-delay: 0.1s;
 }
 
+/* Variações de padrões de animação disparados aleatoriamente pelo script lógico */
 #transition-curtain.run-1 .p5-stripe {
     animation: p5-shatter-1 0.6s cubic-bezier(0.77, 0, 0.175, 1) forwards;
 }
@@ -458,16 +544,19 @@ body.theme-dark .p5-theme-btn {
     animation: p5-shatter-4 0.6s cubic-bezier(0.77, 0, 0.175, 1) forwards;
 }
 
+/* ==========================================================================
+   DEFINIÇÕES DE KEYFRAMES (CLIP-PATH POLYGONS / JITTER / FLIP)
+   ========================================================================== */
 @keyframes p5-shatter-1 {
     0% {
         clip-path: polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%);
     }
-
     40%,
+    /* Cobre a tela inteira */
     60% {
         clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
     }
-
+    /* Some no canto */
     100% {
         clip-path: polygon(100% 100%, 100% 100%, 100% 100%, 100% 100%);
     }
@@ -477,12 +566,10 @@ body.theme-dark .p5-theme-btn {
     0% {
         clip-path: polygon(50% 0%, 50% 0%, 50% 100%, 50% 100%);
     }
-
     40%,
     60% {
         clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
     }
-
     100% {
         clip-path: polygon(100% 100%, 100% 100%, 100% 100%, 100% 100%);
     }
@@ -492,12 +579,10 @@ body.theme-dark .p5-theme-btn {
     0% {
         clip-path: polygon(0% 0%, 0% 0%, 0% 0%, 0% 0%);
     }
-
     40%,
     60% {
         clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
     }
-
     100% {
         clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
     }
@@ -507,12 +592,10 @@ body.theme-dark .p5-theme-btn {
     0% {
         clip-path: polygon(0% 50%, 100% 50%, 100% 50%, 0% 50%);
     }
-
     40%,
     60% {
         clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
     }
-
     100% {
         clip-path: polygon(0% 0%, 0% 0%, 100% 0%, 100% 0%);
     }
@@ -522,93 +605,83 @@ body.theme-dark .p5-theme-btn {
     0% {
         left: -120vw;
     }
-
     50% {
         left: -10vw;
     }
-
     100% {
         left: 120vw;
     }
 }
 
+/* Animação Jitter: Vibração angular caótica baseada em micro distorções em curtos intervalos de tempo */
 @keyframes p5-jitter {
     0% {
         transform: skewX(-20deg) translate(0, 0) rotate(0deg);
     }
-
     20% {
         transform: skewX(-19deg) translate(-1px, 1px) rotate(-0.5deg);
     }
-
     40% {
         transform: skewX(-21deg) translate(1px, -1px) rotate(0.5deg);
     }
-
     60% {
         transform: skewX(-20deg) translate(-1px, -1px) rotate(0deg);
     }
-
     80% {
         transform: skewX(-19.5deg) translate(1px, 1px) rotate(0.3deg);
     }
-
     100% {
         transform: skewX(-20.5deg) translate(0, 0) rotate(-0.3deg);
     }
 }
 
+/* Animação Card-Flip 3D: Faz a rotação completa sobre o eixo Y simulando um card de menu girando */
 @keyframes p5-card-flip {
     0% {
         transform: skewX(10deg) rotate(3deg) rotateY(0deg) scale(1);
     }
-
     12% {
         transform: skewX(10deg) rotate(3deg) rotateY(0deg) scale(1.15);
     }
-
     24% {
         transform: skewX(10deg) rotate(3deg) rotateY(0deg) scale(1);
     }
-
     32% {
         transform: skewX(10deg) rotate(3deg) rotateY(0deg) scale(1.15);
     }
-
     40% {
         transform: skewX(10deg) rotate(3deg) rotateY(0deg) scale(1);
     }
-
     48% {
         transform: skewX(10deg) rotate(3deg) rotateY(0deg) scale(1.15);
     }
-
     56% {
         transform: skewX(10deg) rotate(3deg) rotateY(0deg) scale(1);
     }
-
     60% {
         transform: skewX(10deg) rotate(3deg) rotateY(0deg) scale(1);
     }
-
     72% {
         transform: skewX(10deg) rotate(3deg) rotateY(-360deg) scale(1);
     }
-
     80% {
         transform: skewX(10deg) rotate(3deg) rotateY(-360deg) scale(1);
     }
-
     100% {
         transform: skewX(10deg) rotate(3deg) rotateY(0deg) scale(1);
     }
 }
 
+/* ==========================================================================
+   RESPONSIVIDADE / MEDIA QUERIES (BREAKPOINT MOBILE)
+   ========================================================================== */
 @media (max-width: 768px) {
     .navbar {
+        /* Reduz a espessura da borda principal */
         border: 6px solid #000000;
         padding: 0.8rem 1rem;
         flex-direction: row;
+        /* Reduz a espessura da borda principal */
         flex-wrap: wrap;
         justify-content: space-between;
         gap: 0.75rem;
@@ -618,6 +691,7 @@ body.theme-dark .p5-theme-btn {
         margin-left: 0;
         margin-right: 0;
         width: 100%;
+        /* Força os links a irem para a linha inferior centralizada */
         order: 3;
         display: flex;
         justify-content: center;
@@ -636,6 +710,7 @@ body.theme-dark .p5-theme-btn {
     }
 
     .p5-theme-btn {
+        /* Mantém o botão de tema no topo à direita */
         order: 2;
         padding: 4px 8px;
     }
@@ -647,23 +722,24 @@ body.theme-dark .p5-theme-btn {
     .navbar a:hover::before,
     .navbar a.active::before {
         filter: drop-shadow(2px 2px 0px #d92323);
+        /* Aciona o tremor otimizado para mobile */
         animation: p5-jitter-mobile 0.2s infinite linear;
     }
 
     .section-container {
+        /* Aumenta o recuo superior para não cobrir o conteúdo com a navbar esticada */
         padding: 140px 1.2rem 40px 1.2rem;
     }
 }
 
+/* Versão suavizada e simplificada da trepidação angular para melhor performance em touchscreens mobile */
 @keyframes p5-jitter-mobile {
     0% {
         transform: skewX(-12deg) translate(0, 0);
     }
-
     50% {
         transform: skewX(-14deg) translate(-0.5px, 0.5px);
     }
-
     100% {
         transform: skewX(-12deg) translate(0, 0);
     }
